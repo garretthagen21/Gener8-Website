@@ -5,4 +5,6 @@ Marketing/product website for the Gener-8 platform. See workspace root `CLAUDE.m
 ## Stack
 Static HTML/CSS/JS — `index.html` + `assets/`.
 
-## Branch: feature branches off `master`, PR → `master`
+## Branching Strategy
+- Base branch: `master`
+- PRs target `master`
