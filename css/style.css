@@ -204,7 +204,7 @@ img { max-width: 100%; display: block; }
 .video-card .vmeta { padding: 18px 20px; }
 .video-card h3 { color: var(--navy); font-size: 1.05rem; margin-bottom: .25rem; }
 .video-card p { color: var(--muted); font-size: .88rem; margin: 0; }
-.embed { position: relative; }
+.embed { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
 .embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* ===== Three-phase cards ===== */
@@ -254,7 +254,7 @@ img { max-width: 100%; display: block; }
 /* Footer brand lockup (badge + wordmark) */
 .footer-lockup { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .footer-lockup .footer-badge { margin-bottom: 0; height: 24px; }
-.footer-badge-icon { height: 40px; width: auto; }
+.footer-badge-icon { height: 30px; width: 30px; border-radius: 7px; }
 
 /* Type system: Montserrat display + Manrope body */
 h1, h2, h3, .eyebrow, .feature .ico, .statstrip .num, .phase .pnum { font-family: "Montserrat", system-ui, sans-serif; }
