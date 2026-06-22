@@ -82,10 +82,10 @@ img { max-width: 100%; display: block; }
 .statstrip .lbl { font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.8); margin-top: .4rem; }
 
 .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-.feature { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 26px 22px; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.feature { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; transition: transform .2s, box-shadow .2s, border-color .2s; }
 .feature:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
-.feature .ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg, var(--green), var(--green-deep)); color: var(--ink); font-weight: 800; margin-bottom: 16px; font-size: 1.1rem; }
-.feature h3 { font-size: 1.02rem; color: var(--navy); }
+.feature .ico { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--green), var(--green-deep)); color: var(--ink); font-weight: 800; margin-bottom: 10px; font-size: 1rem; }
+.feature h3 { font-size: 1rem; color: var(--navy); margin-bottom: 4px; }
 .feature p { font-size: .9rem; color: var(--muted); margin: 0; }
 
 .app .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -128,7 +128,7 @@ img { max-width: 100%; display: block; }
 /* ===== Logo wordmark / icon ===== */
 .logo .wordmark { height: 30px; width: auto; }
 .logo .badge { height: 38px; width: auto; }
-.footer-badge { height: 44px !important; width: auto; margin-bottom: 16px; }
+.footer-badge { height: 24px; width: auto; margin-bottom: 16px; }
 
 /* ===== Subpage hero ===== */
 .subhero {
@@ -252,9 +252,9 @@ img { max-width: 100%; display: block; }
 }
 
 /* Footer brand lockup (badge + wordmark) */
-.footer-lockup { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.footer-lockup .footer-badge { margin-bottom: 0; height: 24px; }
-.footer-badge-icon { height: 30px; width: 30px; border-radius: 7px; }
+.footer-lockup { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.footer-lockup .footer-badge { margin-bottom: 0; height: 20px; }
+.footer-badge-icon { height: 28px; width: auto; }
 
 /* Type system: Montserrat display + Manrope body */
 h1, h2, h3, .eyebrow, .feature .ico, .statstrip .num, .phase .pnum { font-family: "Montserrat", system-ui, sans-serif; }
@@ -266,6 +266,6 @@ h1, h2, h3, .eyebrow, .feature .ico, .statstrip .num, .phase .pnum { font-family
 .appstore-badge:hover { transform: translateY(-2px); }
 
 /* Header logo lockup (icon + wordmark) */
-.logo { display: inline-flex; align-items: center; gap: 11px; }
-.logo .badge { height: 36px; width: auto; }
-.logo .wordmark { height: 25px; width: auto; }
+.logo { display: inline-flex; align-items: center; gap: 8px; }
+.logo .badge { height: 28px; width: auto; }
+.logo .wordmark { height: 20px; width: auto; }
