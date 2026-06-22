@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -37,7 +37,9 @@
 
 <section class="section"><div class="wrap">
   <div class="contact-grid">
-    <form id="contact-form" novalidate>
+    <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="contact">
+      <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="form-field"><label for="name">Name</label><input id="name" name="name" type="text" required></div>
       <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
       <div class="form-field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel"></div>
@@ -57,7 +59,7 @@
 <footer class="site-footer"><div class="wrap">
   <div class="cols">
     <div>
-      <span class="footer-lockup"><img class="footer-badge-icon" src="assets/img/logo-icon.png" alt=""><img class="footer-badge" src="assets/img/logo-wordmark.png" alt="Gener-8"></span>
+      <span class="footer-lockup"><img class="footer-badge-icon" src="assets/img/icon-glyph.png" alt=""><img class="footer-badge" src="assets/img/logo-wordmark.png" alt="Gener-8"></span>
       <p>Gener-8&reg; Continuous Rehabilitation Machine. Continuous connected rehabilitation for the knee.</p>
     </div>
     <div><h4>Explore</h4><ul>
