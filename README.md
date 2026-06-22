@@ -48,3 +48,9 @@ Mobile nav drawer · gallery lightbox · contact-form validation + mailto handof
 - `extracted/` holds the cleaned source text + full asset URL list from the WP export.
 - Contact form is client-side (mailto). A real backend (Formspree/serverless) is the
   next step for server-side submission.
+
+## Deployment
+- **Live (Netlify):** https://bright-chaja-4940c2.netlify.app/
+- Auto-deploys from `master`. Config in `netlify.toml` (build `npm run build`, publish root).
+- Contact form via Netlify Forms (`Forms -> contact`).
+- Domain cutover for gener-8.com (DNS) still pending.
