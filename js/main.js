@@ -50,23 +50,39 @@ function initContactForm() {
     if (!form)
         return;
     const status = form.querySelector(".form-status");
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
         }
         const data = new FormData(form);
-        const name = String(data.get("name") || "");
-        const email = String(data.get("email") || "");
-        const phone = String(data.get("phone") || "");
-        const message = String(data.get("message") || "");
-        const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`;
-        const href = `mailto:info@gener-8.com?subject=${encodeURIComponent("Website inquiry from " + name)}&body=${encodeURIComponent(body)}`;
-        window.location.href = href;
-        if (status) {
-            status.textContent = "Opening your email app… if nothing happens, email info@gener-8.com directly.";
-            status.classList.add("show");
+        const params = new URLSearchParams();
+        data.forEach((v, k) => params.append(k, String(v)));
+        const showStatus = (msg) => {
+            if (status) {
+                status.textContent = msg;
+                status.classList.add("show");
+            }
+        };
+        try {
+            // Netlify Forms: POST the encoded form back to the site root
+            const res = await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: params.toString(),
+            });
+            if (!res.ok)
+                throw new Error(String(res.status));
+            form.reset();
+            showStatus("Thanks — your message has been sent. We'll be in touch shortly.");
+        }
+        catch {
+            // Fallback when not served by Netlify (e.g. local preview): open mail client
+            const name = String(data.get("name") || "");
+            const body = `Name: ${name}\nEmail: ${data.get("email") || ""}\nPhone: ${data.get("phone") || ""}\n\n${data.get("message") || ""}`;
+            window.location.href = `mailto:info@gener-8.com?subject=${encodeURIComponent("Website inquiry from " + name)}&body=${encodeURIComponent(body)}`;
+            showStatus("Opening your email app… if nothing happens, email info@gener-8.com directly.");
         }
     });
 }

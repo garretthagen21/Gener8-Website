@@ -2,7 +2,3 @@ node_modules/
 .DS_Store
 *.log
 
-# Large QuickTime exercise clips kept out of history pending hosting
-# decision (transcode to MP4 or move to YouTube). They remain on disk
-# so the local site works; see README.
-assets/video/*.mov
