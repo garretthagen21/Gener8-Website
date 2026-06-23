@@ -99,9 +99,27 @@ function initActiveNav(): void {
   });
 }
 
+/** Pre-fill the contact form message from a ?topic= query param */
+function initContactPrefill(): void {
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  if (!form) return;
+  const topic = new URLSearchParams(location.search).get("topic");
+  if (!topic) return;
+  const messages: Record<string, string> = {
+    info: "I'd like more information about the Gener-8\u00ae.",
+    warranty: "I'd like details about the Gener-8\u00ae warranty (rental or purchase).",
+    telemonitoring: "I'd like to learn more about Gener-8\u00ae telemonitoring.",
+    "app-demo": "I'd like to request a demo of the Gener-8\u00ae Patient Monitoring App.",
+  };
+  const msg = messages[topic];
+  const ta = form.querySelector<HTMLTextAreaElement>('[name="message"]');
+  if (ta && msg && !ta.value) ta.value = msg;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initLightbox();
   initContactForm();
+  initContactPrefill();
   initActiveNav();
 });
