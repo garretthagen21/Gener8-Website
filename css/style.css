@@ -48,9 +48,6 @@ img { max-width: 100%; display: block; }
 .btn-ghost:hover { background: var(--white); color: var(--navy); }
 .btn-sm { padding: .5rem 1.1rem; font-size: .8rem; }
 
-.topbar { background: var(--ink); color: rgba(255,255,255,.85); font-size: .82rem; letter-spacing: .03em; }
-.topbar .wrap { display: flex; justify-content: flex-end; gap: 1.8rem; padding-top: .55rem; padding-bottom: .55rem; }
-.topbar a:hover { color: var(--green); }
 
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--navy); box-shadow: 0 2px 20px rgba(0,0,0,.18); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: .9rem; padding-bottom: .9rem; }
@@ -118,8 +115,7 @@ img { max-width: 100%; display: block; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .statstrip .wrap { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
   .site-footer .cols { grid-template-columns: 1fr; }
-  .topbar .wrap { justify-content: center; gap: 1.2rem; }
-}
+  }
 @media (max-width: 520px) {
   .features { grid-template-columns: 1fr; }
   .hero-cta { flex-direction: column; }
