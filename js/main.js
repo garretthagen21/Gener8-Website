@@ -97,10 +97,30 @@ function initActiveNav() {
             a.classList.remove("active");
     });
 }
+/** Pre-fill the contact form message from a ?topic= query param */
+function initContactPrefill() {
+    const form = document.querySelector("#contact-form");
+    if (!form)
+        return;
+    const topic = new URLSearchParams(location.search).get("topic");
+    if (!topic)
+        return;
+    const messages = {
+        info: "I'd like more information about the Gener-8\u00ae.",
+        warranty: "I'd like details about the Gener-8\u00ae warranty (rental or purchase).",
+        telemonitoring: "I'd like to learn more about Gener-8\u00ae telemonitoring.",
+        "app-demo": "I'd like to request a demo of the Gener-8\u00ae Patient Monitoring App.",
+    };
+    const msg = messages[topic];
+    const ta = form.querySelector('[name="message"]');
+    if (ta && msg && !ta.value)
+        ta.value = msg;
+}
 document.addEventListener("DOMContentLoaded", () => {
     initNav();
     initLightbox();
     initContactForm();
+    initContactPrefill();
     initActiveNav();
 });
 //# sourceMappingURL=main.js.map
