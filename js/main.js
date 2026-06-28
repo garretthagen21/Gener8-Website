@@ -57,8 +57,8 @@ function initContactForm() {
             return;
         }
         const data = new FormData(form);
-        const params = new URLSearchParams();
-        data.forEach((v, k) => params.append(k, String(v)));
+        const payload = {};
+        data.forEach((v, k) => { payload[k] = String(v); });
         const showStatus = (msg) => {
             if (status) {
                 status.textContent = msg;
@@ -66,14 +66,15 @@ function initContactForm() {
             }
         };
         try {
-            // Netlify Forms: POST the encoded form back to the site root
-            const res = await fetch("/", {
+            // Web3Forms: emails the submission to info@gener-8.com
+            const res = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: params.toString(),
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify(payload),
             });
-            if (!res.ok)
-                throw new Error(String(res.status));
+            const result = (await res.json());
+            if (!result.success)
+                throw new Error(result.message || String(res.status));
             form.reset();
             showStatus("Thanks — your message has been sent. We'll be in touch shortly.");
         }
