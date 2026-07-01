@@ -124,7 +124,7 @@ img { max-width: 100%; display: block; }
 /* ===== Logo wordmark / icon ===== */
 .logo .wordmark { height: 30px; width: auto; }
 .logo .badge { height: 38px; width: auto; }
-.footer-badge { height: 24px; width: auto; margin-bottom: 16px; }
+.footer-badge { height: 17px; width: auto; margin-bottom: 16px; }
 
 /* ===== Subpage hero ===== */
 .subhero {
