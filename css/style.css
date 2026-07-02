@@ -112,6 +112,7 @@ img { max-width: 100%; display: block; }
   .nav.open { transform: translateX(0); }
   .nav-toggle { display: block; z-index: 60; }
   .hero .wrap, .app .wrap, .band .wrap { grid-template-columns: 1fr; }
+  .hero .wrap { padding-top: 36px; padding-bottom: 56px; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .statstrip .wrap { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
   .site-footer .cols { grid-template-columns: 1fr; }
