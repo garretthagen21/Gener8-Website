@@ -267,7 +267,13 @@ h1, h2, h3, .eyebrow, .feature .ico, .statstrip .num, .phase .pnum { font-family
 .logo .badge { height: 28px; width: auto; }
 .logo .wordmark { height: 20px; width: auto; }
 
-/* Clickable mode cards -> image preview via lightbox */
+/* Clickable mode cards -> expand slightly to reveal preview image */
+.features { align-items: start; }
 .feature.previewable { position: relative; cursor: pointer; }
-.mode-zoom { position: absolute; top: 14px; right: 14px; color: var(--muted); opacity: .5; transition: opacity .15s ease, color .15s ease; }
-.feature.previewable:hover .mode-zoom { opacity: 1; color: var(--green-deep); }
+.feature.previewable:hover { transform: none; }
+.feature.expanded { box-shadow: var(--shadow); border-color: transparent; }
+.feature-preview { display: block; width: 100%; border-radius: 8px; object-fit: cover; max-height: 0; opacity: 0; margin-top: 0; overflow: hidden; transition: max-height .35s ease, opacity .3s ease, margin-top .35s ease; }
+.feature.expanded .feature-preview { max-height: 180px; opacity: 1; margin-top: 14px; }
+.mode-toggle { position: absolute; top: 14px; right: 14px; color: var(--muted); opacity: .55; transition: transform .3s ease, opacity .2s ease, color .2s ease; }
+.feature.previewable:hover .mode-toggle { opacity: 1; color: var(--green-deep); }
+.feature.expanded .mode-toggle { transform: rotate(180deg); color: var(--green-deep); }

@@ -117,11 +117,24 @@ function initContactPrefill() {
     if (ta && msg && !ta.value)
         ta.value = msg;
 }
+/** Home mode cards: click to expand and reveal the preview image */
+function initFeatureExpand() {
+    const cells = document.querySelectorAll(".feature.previewable");
+    cells.forEach((cell) => {
+        cell.addEventListener("click", () => {
+            const wasOpen = cell.classList.contains("expanded");
+            cells.forEach((c) => c.classList.remove("expanded"));
+            if (!wasOpen)
+                cell.classList.add("expanded");
+        });
+    });
+}
 document.addEventListener("DOMContentLoaded", () => {
     initNav();
     initLightbox();
     initContactForm();
     initContactPrefill();
+    initFeatureExpand();
     initActiveNav();
 });
 //# sourceMappingURL=main.js.map
