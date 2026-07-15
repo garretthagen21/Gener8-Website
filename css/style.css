@@ -266,3 +266,9 @@ h1, h2, h3, .eyebrow, .feature .ico, .statstrip .num, .phase .pnum { font-family
 .logo { display: inline-flex; align-items: center; gap: 8px; }
 .logo .badge { height: 28px; width: auto; }
 .logo .wordmark { height: 20px; width: auto; }
+
+/* Clickable overview modes -> image preview via lightbox */
+.benefit.previewable { position: relative; cursor: pointer; padding-right: 46px; border-radius: 0 10px 10px 0; transition: background .15s ease; }
+.benefit.previewable:hover { background: var(--paper); }
+.mode-zoom { position: absolute; top: 16px; right: 16px; color: var(--muted); opacity: .5; transition: opacity .15s ease, color .15s ease; }
+.benefit.previewable:hover .mode-zoom { opacity: 1; color: var(--green-deep); }
