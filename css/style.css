@@ -277,3 +277,21 @@ h1, h2, h3, .eyebrow, .feature .ico, .statstrip .num, .phase .pnum { font-family
 .mode-toggle { position: absolute; top: 14px; right: 14px; color: var(--muted); opacity: .55; transition: transform .3s ease, opacity .2s ease, color .2s ease; }
 .feature.previewable:hover .mode-toggle { opacity: 1; color: var(--green-deep); }
 .feature.expanded .mode-toggle { transform: rotate(180deg); color: var(--green-deep); }
+
+/* Device-label setup panel (patient-app?d=<serial>) */
+.setup { background: linear-gradient(120deg, var(--navy-deep), var(--navy)); color: var(--white); padding: 40px 0 48px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.setup .wrap { max-width: 640px; }
+.setup h1 { font-size: clamp(2rem, 7vw, 2.8rem); }
+.setup p { font-size: 1.2rem; color: rgba(255,255,255,.9); }
+.setup-device strong, .setup-code { color: var(--green); letter-spacing: .04em; }
+.setup-get { margin: 1.4rem 0; }
+.setup .appstore-badge img { height: 64px; }
+.setup-steps { margin: 1.6rem 0; padding-left: 1.6rem; font-size: 1.2rem; line-height: 1.5; }
+.setup-steps li { margin-bottom: .9rem; padding-left: .3rem; }
+.setup-steps li::marker { color: var(--green); font-family: "Montserrat", system-ui, sans-serif; font-weight: 800; }
+.setup-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.setup-links .btn { font-size: 1.05rem; padding: 1rem 1.6rem; min-height: 52px; }
+@media (max-width: 520px) {
+  .setup-links { flex-direction: column; }
+  .setup-links .btn { justify-content: center; }
+}

@@ -129,6 +129,35 @@ function initFeatureExpand(): void {
   });
 }
 
+/** Device-label landing: serial from /patient-app?d=<serial>. Display-only; never sent anywhere. */
+function parseSerial(search: string): string | null {
+  const d = new URLSearchParams(search).get("d");
+  return d && /^[0-9A-Fa-f]{6}$/.test(d) ? d.toUpperCase() : null;
+}
+
+/** Coarse platform from user agent; iPadOS reports as Macintosh with touch */
+function setupPlatform(userAgent: string, maxTouchPoints: number): "ios" | "android" | "desktop" {
+  if (/iPhone|iPad|iPod/.test(userAgent) || (/Macintosh/.test(userAgent) && maxTouchPoints > 1)) return "ios";
+  if (/Android/.test(userAgent)) return "android";
+  return "desktop";
+}
+
+/** Show the setup panel when reached from a device label QR */
+function initSetupPanel(): void {
+  const panel = document.querySelector<HTMLElement>("#setup");
+  if (!panel) return;
+  const serial = parseSerial(location.search);
+  if (!serial) return;
+
+  panel.querySelector<HTMLElement>("[data-device-name]")!.textContent = `Gen8-${serial}`;
+  panel.querySelector<HTMLElement>("[data-device-code]")!.textContent = serial;
+  const platform = setupPlatform(navigator.userAgent, navigator.maxTouchPoints);
+  panel.querySelectorAll<HTMLElement>("[data-platform]").forEach((el) => {
+    el.hidden = !el.dataset.platform!.split(" ").includes(platform);
+  });
+  panel.hidden = false;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initLightbox();
@@ -136,4 +165,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactPrefill();
   initFeatureExpand();
   initActiveNav();
+  initSetupPanel();
 });
