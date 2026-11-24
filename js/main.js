@@ -89,10 +89,10 @@ function initContactForm() {
 }
 /** Mark the current page's nav link active */
 function initActiveNav() {
-    const here = location.pathname.split("/").pop() || "index.html";
+    const here = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
     document.querySelectorAll(".nav a").forEach((a) => {
-        const href = a.getAttribute("href") || "";
-        if (href === here || (here === "" && href === "index.html"))
+        const href = (a.getAttribute("href") || "").replace(/\.html$/, "");
+        if (href === here)
             a.classList.add("active");
         else
             a.classList.remove("active");
@@ -129,10 +129,10 @@ function initFeatureExpand() {
         });
     });
 }
-/** Device-label landing: serial from /patient-app?d=<serial>. Display-only; never sent anywhere. */
+/** Device-label landing: serial from /get-started?d=<serial>. Display-only; never sent anywhere. */
 function parseSerial(search) {
     const d = new URLSearchParams(search).get("d");
-    return d && /^[0-9A-Fa-f]{6}$/.test(d) ? d.toUpperCase() : null;
+    return d && /^[0-9A-Fa-f]{8}$/.test(d) ? d.toUpperCase() : null;
 }
 /** Coarse platform from user agent; iPadOS reports as Macintosh with touch */
 function setupPlatform(userAgent, maxTouchPoints) {
@@ -142,21 +142,23 @@ function setupPlatform(userAgent, maxTouchPoints) {
         return "android";
     return "desktop";
 }
-/** Show the setup panel when reached from a device label QR */
+/** Get Started panel: label QR (?d=) opens straight on patient setup; otherwise patient + therapist paths */
 function initSetupPanel() {
     const panel = document.querySelector("#setup");
     if (!panel)
         return;
     const serial = parseSerial(location.search);
-    if (!serial)
-        return;
-    panel.querySelector("[data-device-name]").textContent = `Gen8-${serial}`;
-    panel.querySelector("[data-device-code]").textContent = serial;
+    if (serial) {
+        panel.querySelector("[data-device-name]").textContent = `Gen8-${serial}`;
+        panel.querySelector("[data-device-code]").textContent = serial;
+        panel.querySelectorAll(".setup-device, [data-code-known]").forEach((el) => { el.hidden = false; });
+        panel.querySelectorAll("[data-code-default], .setup-role").forEach((el) => { el.hidden = true; });
+        panel.querySelector("[data-setup-heading]").textContent = "Set up your Gener-8";
+    }
     const platform = setupPlatform(navigator.userAgent, navigator.maxTouchPoints);
     panel.querySelectorAll("[data-platform]").forEach((el) => {
         el.hidden = !el.dataset.platform.split(" ").includes(platform);
     });
-    panel.hidden = false;
 }
 document.addEventListener("DOMContentLoaded", () => {
     initNav();
