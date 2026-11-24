@@ -152,7 +152,7 @@ function initSetupPanel() {
         panel.querySelector("[data-device-name]").textContent = `Gen8-${serial}`;
         panel.querySelector("[data-device-code]").textContent = serial;
         panel.querySelectorAll(".setup-device, [data-code-known]").forEach((el) => { el.hidden = false; });
-        panel.querySelectorAll("[data-code-default], .setup-role").forEach((el) => { el.hidden = true; });
+        panel.querySelectorAll("[data-code-default], [data-role-only]").forEach((el) => { el.hidden = true; });
         panel.querySelector("[data-setup-heading]").textContent = "Set up your Gener-8";
     }
     const platform = setupPlatform(navigator.userAgent, navigator.maxTouchPoints);
